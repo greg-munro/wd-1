@@ -6,5 +6,3 @@ var options = {
 };
 var router = new WebsyDesigns.Router(options);
 router.init();
-var test = 'hello';
-console.log(test);
