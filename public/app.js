@@ -37,3 +37,5 @@ var options = {
 };
 var router = new WebsyDesigns.Router(options);
 router.init();
+var apiService = new WebsyDesigns.APIService('https://ticketmasterstefan-skliarovv1.p.rapidapi.com/getEventOffers');
+console.log(apiService);
