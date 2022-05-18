@@ -1,5 +1,4 @@
 /* global WebsyDesigns include TopMenu */ 
-
 /* global getPageContents navController */ 
 class TopMenu {
   constructor (elementId, options) {    
@@ -43,5 +42,6 @@ const apiService = new WebsyDesigns.APIService('https://my-json-server.typicode.
 
 const phonesList = apiService.get('phones/1').then(result => {
   // const id = phonesList.id - how can I get this dynamically after service is called
-  console.log(result) // try to render the result & update state etc, how is this done in WD?
+  console.log(result)
+  // how to render this result on the home page?
 })
