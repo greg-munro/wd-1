@@ -37,5 +37,7 @@ var options = {
 };
 var router = new WebsyDesigns.Router(options);
 router.init();
-var apiService = new WebsyDesigns.APIService('https://localhost/4000/phones');
-console.log(apiService);
+var apiService = new WebsyDesigns.APIService('https://my-json-server.typicode.com/gmunro90/wd-1/');
+var phonesList = apiService.get('phones', 1).then(function (result) {
+  console.log(result); // id parameter not working? how to call just 1 phone? is this data parsed automatically?
+});
