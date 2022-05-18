@@ -1,4 +1,7 @@
-/* global WebsyDesigns */ 
+/* global WebsyDesigns include TopMenu */ 
+
+include('./classes/topMenu.js')
+
 const options = {
   defaultView: 'home'
 }
