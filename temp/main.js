@@ -1,7 +1,6 @@
 /* global WebsyDesigns include */ 
 
 /* global WebsyDesigns */
-
 const { render } = require("express/lib/response")
 
 class List {
