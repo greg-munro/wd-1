@@ -1,16 +1,10 @@
-/* global WebsyDesigns include TopMenu */ 
-include('./classes/topMenu.js')
+/* global WebsyDesigns include */ 
 
+include('./classes/phonesList.js')
+
+// router initialisation
 const options = {
   defaultView: 'home'
 }
 const router = new WebsyDesigns.Router(options)
 router.init()
- 
-const apiService = new WebsyDesigns.APIService('https://my-json-server.typicode.com/gmunro90/wd-1/')
-
-const phonesList = apiService.get('phones/1').then(result => {
-  // const id = phonesList.id - how can I get this dynamically after service is called
-  console.log(result)
-  // how to render this result on the home page?
-})
