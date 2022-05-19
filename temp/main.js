@@ -1,31 +1,16 @@
 /* global WebsyDesigns include */ 
 
 /* global WebsyDesigns */
-const { render } = require("express/lib/response")
 
-class List {
-  constructor (elementId, options) {
-    const DEFAULT = {}
-    this.elementId = elementId
-    this.options = Object.assign({}, options)
-
-    const el = document.getElementById(this.elementId)
-    this.render()
-  }
-}
+const el = document.getElementById('test')
 
 const apiService = new WebsyDesigns.APIService('https://my-json-server.typicode.com/gmunro90/wd-1/')
-const phonesList = apiService.get('phones').then(phonesList => {
-  console.log(phonesList)
+apiService.get('phones').then(phones => {
+  let html = phones.map(phone => 
+    (`<h2>${phone.name}</h2>`)
+  )
+  el.innerHTML = html
 })
-
-render() {
-let html = phonesList.map(phone => {
-  '<p>'{phone.name}'</p>'
-})
-const el = document.getElementById('test')
-el.innerHTML = html
-}
 
 
 // router initialisation

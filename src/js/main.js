@@ -1,6 +1,6 @@
 /* global WebsyDesigns include */ 
 
-include('./classes/phonesList.js')
+include('./components/phonesList.js')
 
 // router initialisation
 const options = {

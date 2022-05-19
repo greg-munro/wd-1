@@ -1,5 +1,3 @@
-/* global WebsyDesigns include */ 
-
 /* global WebsyDesigns */
 
 const el = document.getElementById('test')
@@ -11,11 +9,3 @@ apiService.get('phones').then(phones => {
   )
   el.innerHTML = html
 })
-
-
-// router initialisation
-const options = {
-  defaultView: 'home'
-}
-const router = new WebsyDesigns.Router(options)
-router.init()

@@ -1,1 +1,1 @@
-html,body{font-family:Arial,Helvetica,sans-serif}*{box-sizing:border-box}body{margin:0}nav{height:82px;display:flex;padding:20px 36px;box-shadow:0 2.98256px 7.4564px #979696}nav svg{max-width:100px}nav ul{list-style:none}h3{font-weight:100}
+html,body{font-family:Arial,Helvetica,sans-serif;margin:0}*{box-sizing:border-box}nav{height:82px;padding:20px 36px;box-shadow:0 2.98256px 7.4564px #979696;background-color:#154281}nav img{max-width:200px}nav ul{display:flex;justify-content:end}nav li{list-style:none;color:#161414;padding:5px}h3{font-weight:100}
