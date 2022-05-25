@@ -34,4 +34,8 @@ var disableDarkMode = function disableDarkMode() {
 };
 
 var darkModeToggle = document.querySelector('#dark-mode');
-darkModeToggle.addEventListener('click', function () {});
+darkModeToggle.addEventListener('click', function () {
+  if (darkMode !== 'enabled') {
+    enableDarkMode();
+  }
+});

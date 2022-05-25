@@ -48,5 +48,7 @@ const disableDarkMode = () => {
 
 const darkModeToggle = document.querySelector('#dark-mode')
 darkModeToggle.addEventListener('click', () => {
-  
+  if (darkMode !== 'enabled') {
+    enableDarkMode()
+  }
 })
