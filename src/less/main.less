@@ -8,25 +8,74 @@ html, body {
 }
 
 nav {
+  display: flex;
   height: 82px;
   padding: 20px 36px;
   box-shadow: 0 2.98256px 7.4564px rgb(151, 150, 150);
   background-color: #154281;
+  align-items: center;
+  justify-content: space-between;
   img {
     max-width: 200px;
   }
   ul {
     display: flex;
     justify-content: end;
+    height: 100%;
   }
   li {
+    display: flex;
     list-style: none;
     color: rgb(22, 20, 20);
     padding: 5px;
+    height: 100%;
   }
+}
+
+#switch-test {
+  display: flex;
 }
 
 h3 {
   font-weight: 100;
 }
 
+.websy-btn.btn-primary {
+  &.active {
+    background-color: #154281;
+  }
+}
+
+.cards-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.card {
+  width: 175px;
+  font-size: 12px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card--image {
+  width: 100%;
+  border-radius: 9px;
+  margin-bottom: 9px;
+}
+
+.card--stats {
+  display: flex;
+  align-items: center;
+}
+
+.card--star {
+  height: 15px;
+}
+
+.card--price {
+  margin-top: auto;
+}
