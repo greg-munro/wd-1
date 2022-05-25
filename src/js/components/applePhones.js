@@ -2,7 +2,7 @@
 
 const appleEl = document.getElementById('all-phones')
 
-const appleService = new WebsyDesigns.APIService('https://my-json-server.typicode.com/gmunro90/wd-1/')
+const appleService = new WebsyDesigns.APIService('http://localhost:3000')
 appleService.get('phones').then(phones => {
   let html = phones.map(phone => 
     (`
