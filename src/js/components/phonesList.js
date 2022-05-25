@@ -7,9 +7,9 @@ apiService.get('phones').then(phones => {
   let html = phones.map(phone => 
     (`
     <div class="card" width="300px">
-    <a href="google.com">
-    <img src=${phone.image_url} width="200px class="card--image">
-    </a>
+    
+    <img src=${phone.image_url} width="200px class="card--image">Hello
+    
     <div class="card--stats">
         <span class="card--star">${phone.rating}</span>
     </div>
