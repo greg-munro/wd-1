@@ -1,6 +1,7 @@
 /* global WebsyDesigns include localStorage */ 
 
 include('./components/phonesList.js')
+include('./components/applePhones.js')
 
 // router initialisation
 const options = {
@@ -11,7 +12,7 @@ router.init()
 
 const switchTest = new WebsyDesigns.Switch('dark-mode', {
   label: '☀️/🌚', 
-  onToggle: (a, b, c) => {
+  onToggle: (enableDarkMode) => {
   } })
 
 let darkMode = localStorage.getItem('darkMode')
@@ -32,3 +33,5 @@ darkModeToggle.addEventListener('click', () => {
     enableDarkMode()
   }
 })
+
+// const drop = new WebsyDesigns.WebsyDropdown('dropdown')
