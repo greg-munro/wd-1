@@ -2,6 +2,7 @@
 
 include('./components/phonesList.js')
 include('./components/applePhones.js')
+include('./components/samsungPhones.js')
 
 // router initialisation
 const options = {

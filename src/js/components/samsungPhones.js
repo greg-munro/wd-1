@@ -1,9 +1,9 @@
 /* global WebsyDesigns */
 
-const appleEl = document.getElementById('apple-phones')
-const appleService = new WebsyDesigns.APIService('http://localhost:3000')
-appleService.get('phones').then(phones => {
-  let html = phones.filter(phone => phone.brand === 'Apple').map(phone =>  
+const samsungEl = document.getElementById('samsung-phones')
+const samsungService = new WebsyDesigns.APIService('http://localhost:3000')
+samsungService.get('phones').then(phones => {
+  let html = phones.filter(phone => phone.brand === 'Samsung').map(phone =>  
     (`
     <div class="card">
     <img src=${phone.image_url} width="200px class="card--image">
@@ -15,5 +15,5 @@ appleService.get('phones').then(phones => {
     </div>
     `)
   ).join('')
-  appleEl.innerHTML = html
+  samsungEl.innerHTML = html
 })
