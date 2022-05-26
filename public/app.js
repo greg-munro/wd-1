@@ -27,25 +27,14 @@ var options = {
 };
 var router = new WebsyDesigns.Router(options);
 router.init();
-var switchTest = new WebsyDesigns.Switch('dark-mode', {
-  label: '☀️/🌚',
-  onToggle: function onToggle(enableDarkMode) {}
-});
 var darkMode = localStorage.getItem('darkMode');
-
-var enableDarkMode = function enableDarkMode() {
-  document.body.classList.add('darkmode');
-  localStorage.setItem('darkMode', 'enabled');
-};
-
-var disableDarkMode = function disableDarkMode() {
-  document.body.classList.remove('darkmode');
-  localStorage.setItem('darkMode', null);
-};
-
-var darkModeToggle = document.querySelector('#dark-mode');
-darkModeToggle.addEventListener('click', function () {
-  if (darkMode !== 'enabled') {
-    enableDarkMode();
+var switchTest = new WebsyDesigns.Switch('dark-mode'
+/* this is the ID being called */
+, {
+  label: '☀️/🌚',
+  onToggle: function onToggle(enableDarkMode) {
+    /* this is calling a function straight away */
+    localStorage.setItem('darkMode', enableDarkMode ? 'enabled' : null);
+    document.body.classList[enableDarkMode ? 'add' : 'remove']('dark-mode');
   }
 }); // const drop = new WebsyDesigns.WebsyDropdown('dropdown')

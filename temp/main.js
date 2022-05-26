@@ -53,28 +53,14 @@ const options = {
 const router = new WebsyDesigns.Router(options)
 router.init()
 
-const switchTest = new WebsyDesigns.Switch('dark-mode', {
-  label: '☀️/🌚', 
-  onToggle: (enableDarkMode) => {
-  } })
-
 let darkMode = localStorage.getItem('darkMode')
 
-const enableDarkMode = () => {
-  document.body.classList.add('darkmode')
-  localStorage.setItem('darkMode', 'enabled')
-}
-
-const disableDarkMode = () => {
-  document.body.classList.remove('darkmode')
-  localStorage.setItem('darkMode', null)
-}
-
-const darkModeToggle = document.querySelector('#dark-mode')
-darkModeToggle.addEventListener('click', () => {
-  if (darkMode !== 'enabled') {
-    enableDarkMode()
+const switchTest = new WebsyDesigns.Switch('dark-mode' /* this is the ID being called */, {
+  label: '☀️/🌚', 
+  onToggle: enableDarkMode => { /* this is calling a function straight away */
+    localStorage.setItem('darkMode', enableDarkMode ? 'enabled' : null)
+    document.body.classList[enableDarkMode ? 'add' : 'remove']('dark-mode')
   }
-})
 
+})
 // const drop = new WebsyDesigns.WebsyDropdown('dropdown')
