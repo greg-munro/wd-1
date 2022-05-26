@@ -26,7 +26,7 @@ apiService.get('phones').then(phones => {
 
 /* global WebsyDesigns */
 
-const appleEl = document.getElementById('all-phones')
+const appleEl = document.getElementById('apple-phones')
 
 const appleService = new WebsyDesigns.APIService('http://localhost:3000')
 appleService.get('phones').then(phones => {

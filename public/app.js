@@ -13,7 +13,7 @@ apiService.get('phones').then(function (phones) {
 });
 /* global WebsyDesigns */
 
-var appleEl = document.getElementById('all-phones');
+var appleEl = document.getElementById('apple-phones');
 var appleService = new WebsyDesigns.APIService('http://localhost:3000');
 appleService.get('phones').then(function (phones) {
   var html = phones.map(function (phone) {
