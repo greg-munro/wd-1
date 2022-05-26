@@ -8,7 +8,7 @@ apiService.get('phones').then(phones => {
     (`
     <div class="card" width="300px">
     
-    <img src=${phone.image_url} width="200px class="card--image">Hello
+    <img src=${phone.image_url} width="200px class="card--image">
     
     <div class="card--stats">
         <span class="card--star">${phone.rating}</span>
