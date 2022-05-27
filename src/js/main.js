@@ -52,8 +52,8 @@ const drop = new WebsyDesigns.WebsyDropdown('dropdown', {
   ]}
 )
 
-const drop2 = new WebsyDesigns.WebsyDropdown('dropdown-2', {
-  label: 'test',
+const brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
+  label: 'Filter brand',
   multiSelect: false,
   onItemSelected: (item, selectedIdexes, items) => {
     console.log(item, selectedIdexes, items)
@@ -65,5 +65,21 @@ const drop2 = new WebsyDesigns.WebsyDropdown('dropdown-2', {
   items: [
     {label: 'Apple', test: 'cat'},
     {label: 'Samsung', test: 'dog'}
+  ]}
+)
+
+const colorFilter = new WebsyDesigns.WebsyDropdown('dropdown-3', {
+  label: 'Filter brand',
+  multiSelect: false,
+  onItemSelected: (item, selectedIdexes, items) => {
+    console.log(item, selectedIdexes, items)
+    router.addUrlParams({
+      brand: item.label
+    })
+    renderPhoneList()
+  },
+  items: [
+    {label: 'Black', test: 'cat'},
+    {label: 'White', test: 'dog'}
   ]}
 )

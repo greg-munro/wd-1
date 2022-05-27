@@ -113,8 +113,8 @@ var drop = new WebsyDesigns.WebsyDropdown('dropdown', {
     test: 'pizza'
   }]
 });
-var drop2 = new WebsyDesigns.WebsyDropdown('dropdown-2', {
-  label: 'test',
+var brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
+  label: 'Filter brand',
   multiSelect: false,
   onItemSelected: function onItemSelected(item, selectedIdexes, items) {
     console.log(item, selectedIdexes, items);
@@ -128,6 +128,24 @@ var drop2 = new WebsyDesigns.WebsyDropdown('dropdown-2', {
     test: 'cat'
   }, {
     label: 'Samsung',
+    test: 'dog'
+  }]
+});
+var colorFilter = new WebsyDesigns.WebsyDropdown('dropdown-3', {
+  label: 'Filter brand',
+  multiSelect: false,
+  onItemSelected: function onItemSelected(item, selectedIdexes, items) {
+    console.log(item, selectedIdexes, items);
+    router.addUrlParams({
+      brand: item.label
+    });
+    renderPhoneList();
+  },
+  items: [{
+    label: 'Black',
+    test: 'cat'
+  }, {
+    label: 'White',
     test: 'dog'
   }]
 });
