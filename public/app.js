@@ -34,7 +34,10 @@ appleService.get('phones').then(function (phones) {
   }).join('');
   appleEl.innerHTML = html;
 });
+
+function sortPhonesAtoZ() {}
 /* global WebsyDesigns */
+
 
 var samsungEl = document.getElementById('samsung-phones');
 var samsungService = new WebsyDesigns.APIService('http://localhost:3000');
@@ -57,8 +60,8 @@ samsungService.get('phones').then(function (phones) {
 //   }
 // }
 
-function renderPhoneDetail(id) {
-  console.log(id);
+function renderPhoneDetail(id) {// console.log(id)
+  // some kind of render function to render html of the phone that was selected with it's id
 } // router initialisation
 
 

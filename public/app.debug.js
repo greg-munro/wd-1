@@ -51,6 +51,10 @@ appleService.get('phones').then(phones => {
   appleEl.innerHTML = html
 })
 
+function sortPhonesAtoZ () {
+  
+}
+
 /* global WebsyDesigns */
 
 const samsungEl = document.getElementById('samsung-phones')
@@ -84,7 +88,8 @@ samsungService.get('phones').then(phones => {
 // }
 
 function renderPhoneDetail (id) {
-  console.log(id)
+  // console.log(id)
+  // some kind of render function to render html of the phone that was selected with it's id
 }
 
 
