@@ -1,16 +1,30 @@
 /* global WebsyDesigns include router */ 
 
-// class PhoneDetail {
-//   constructor (elementId, options) {
-//     this.elementId = elementId
-//     this.options = Object.assign({}, options)
-//   }
-//   render () {
-//     console.log(router)
-//   }
-// }
+const detail = document.getElementById('phonedetail')
 
-function renderPhoneDetail (id) {
-  // console.log(id)
-  // some kind of render function to render html of the phone that was selected with it's id
+const detailService = new WebsyDesigns.APIService('http://localhost:3000')
+function renderPhoneDetail () {
+  detailService.get('phones').then(phones => {
+    if (router.currentParams.items.brand) {
+      phones = phones.filter(p => p.brand === router.currentParams.items.brand)
+    }
+    let html = phones.map(phone => 
+      (`
+      <div class="card websy-trigger" data-view="phonedetail?id=${phone.id}" width="300px">
+      
+      <img src=${phone.image_url} width="200px class="card--image">
+      
+      <div class="card--stats">
+          <span class="card--star">${phone.rating}</span>
+      </div>
+      <p class="card--title">${phone.name}</p>
+      <p class="card--price"><span class="bold">${phone.price}</span></p>
+      
+      </div>
+      `)
+    ).join('')
+    detail.innerHTML = html
+  })
 }
+
+renderPhoneDetail()

@@ -77,20 +77,34 @@ samsungService.get('phones').then(phones => {
 
 /* global WebsyDesigns include router */ 
 
-// class PhoneDetail {
-//   constructor (elementId, options) {
-//     this.elementId = elementId
-//     this.options = Object.assign({}, options)
-//   }
-//   render () {
-//     console.log(router)
-//   }
-// }
+const detail = document.getElementById('phonedetail')
 
-function renderPhoneDetail (id) {
-  // console.log(id)
-  // some kind of render function to render html of the phone that was selected with it's id
+const detailService = new WebsyDesigns.APIService('http://localhost:3000')
+function renderPhoneDetail () {
+  detailService.get('phones').then(phones => {
+    if (router.currentParams.items.brand) {
+      phones = phones.filter(p => p.brand === router.currentParams.items.brand)
+    }
+    let html = phones.map(phone => 
+      (`
+      <div class="card websy-trigger" data-view="phonedetail?id=${phone.id}" width="300px">
+      
+      <img src=${phone.image_url} width="200px class="card--image">
+      
+      <div class="card--stats">
+          <span class="card--star">${phone.rating}</span>
+      </div>
+      <p class="card--title">${phone.name}</p>
+      <p class="card--price"><span class="bold">${phone.price}</span></p>
+      
+      </div>
+      `)
+    ).join('')
+    detail.innerHTML = html
+  })
 }
+
+renderPhoneDetail()
 
 
 // router initialisation
@@ -99,7 +113,6 @@ const options = {
 }
 const router = new WebsyDesigns.Router(options)
 router.on('show', (view, params) => {
-  console.log(view, params)
   if (view === 'phonedetail') {
     renderPhoneDetail(params.items.id)
   }
@@ -113,10 +126,10 @@ router.init()
 let darkMode = localStorage.getItem('darkMode')
 document.body.classList[darkMode === 'enabled' ? 'add' : 'remove']('dark-mode')
 
-const switchTest = new WebsyDesigns.Switch('dark-mode' /* this is the ID being called */, {
+const switchTest = new WebsyDesigns.Switch('dark-mode', {
   label: '☀️/🌚',
   enabled: darkMode === 'enabled',
-  onToggle: enableDarkMode => { /* this is calling a function straight away */
+  onToggle: enableDarkMode => { 
     localStorage.setItem('darkMode', enableDarkMode ? 'enabled' : null)
     document.body.classList[enableDarkMode ? 'add' : 'remove']('dark-mode')
   }
@@ -141,8 +154,8 @@ const drop = new WebsyDesigns.WebsyDropdown('dropdown', {
 )
 
 const brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
-  label: 'Filter brand',
-  multiSelect: false,
+  label: 'Brand',
+  multiSelect: true,
   onItemSelected: (item, selectedIdexes, items) => {
     console.log(item, selectedIdexes, items)
     router.addUrlParams({
@@ -151,23 +164,23 @@ const brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
     renderPhoneList()
   },
   items: [
-    {label: 'Apple', test: 'cat'},
-    {label: 'Samsung', test: 'dog'}
+    {label: 'Apple'},
+    {label: 'Samsung'}
   ]}
 )
 
 const colorFilter = new WebsyDesigns.WebsyDropdown('dropdown-3', {
-  label: 'Filter brand',
-  multiSelect: false,
+  label: 'Color',
+  multiSelect: true,
   onItemSelected: (item, selectedIdexes, items) => {
     console.log(item, selectedIdexes, items)
     router.addUrlParams({
-      brand: item.label
+      color: item.label
     })
     renderPhoneList()
   },
   items: [
-    {label: 'Black', test: 'cat'},
-    {label: 'White', test: 'dog'}
+    {label: 'Black'},
+    {label: 'White'}
   ]}
 )
