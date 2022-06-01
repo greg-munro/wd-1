@@ -8,6 +8,9 @@ function renderPhoneList () {
     if (router.currentParams.items.brand) {
       phones = phones.filter(p => p.brand === router.currentParams.items.brand)
     }
+    if (router.currentParams.items.color) {
+      phones = phones.filter(p => p.color === router.currentParams.items.color)
+    }
     let html = phones.map(phone => 
       (`
       <div class="card websy-trigger" data-view="phonedetail?id=${phone.id}" width="300px">

@@ -10,6 +10,9 @@ function renderPhoneList () {
     if (router.currentParams.items.brand) {
       phones = phones.filter(p => p.brand === router.currentParams.items.brand)
     }
+    if (router.currentParams.items.color) {
+      phones = phones.filter(p => p.color === router.currentParams.items.color)
+    }
     let html = phones.map(phone => 
       (`
       <div class="card websy-trigger" data-view="phonedetail?id=${phone.id}" width="300px">
@@ -51,10 +54,6 @@ appleService.get('phones').then(phones => {
   appleEl.innerHTML = html
 })
 
-function sortPhonesAtoZ () {
-  
-}
-
 /* global WebsyDesigns */
 
 const samsungEl = document.getElementById('samsung-phones')
@@ -82,25 +81,7 @@ const detail = document.getElementById('phonedetail')
 const detailService = new WebsyDesigns.APIService('http://localhost:3000')
 function renderPhoneDetail () {
   detailService.get('phones').then(phones => {
-    if (router.currentParams.items.brand) {
-      phones = phones.filter(p => p.brand === router.currentParams.items.brand)
-    }
-    let html = phones.map(phone => 
-      (`
-      <div class="card websy-trigger" data-view="phonedetail?id=${phone.id}" width="300px">
-      
-      <img src=${phone.image_url} width="200px class="card--image">
-      
-      <div class="card--stats">
-          <span class="card--star">${phone.rating}</span>
-      </div>
-      <p class="card--title">${phone.name}</p>
-      <p class="card--price"><span class="bold">${phone.price}</span></p>
-      
-      </div>
-      `)
-    ).join('')
-    detail.innerHTML = html
+    console.log('phones', phones)
   })
 }
 
@@ -136,23 +117,6 @@ const switchTest = new WebsyDesigns.Switch('dark-mode', {
 
 })
 
-const drop = new WebsyDesigns.WebsyDropdown('dropdown', {
-  label: 'test',
-  multiSelect: true,
-  onItemSelected: (item, selectedIdexes, items) => {
-    console.log(item, selectedIdexes, items)
-    router.addUrlParams({
-      test: item.test
-    })
-  },
-  items: [
-    {label: 'a', test: 'cat'},
-    {label: 'b', test: 'dog'},
-    {label: 'c', test: 'pizza'}
-
-  ]}
-)
-
 const brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
   label: 'Brand',
   multiSelect: true,
@@ -181,6 +145,9 @@ const colorFilter = new WebsyDesigns.WebsyDropdown('dropdown-3', {
   },
   items: [
     {label: 'Black'},
-    {label: 'White'}
+    {label: 'White'},
+    {label: 'Blue'},
+    {label: 'Purple'},
+    {label: 'Red'}
   ]}
 )

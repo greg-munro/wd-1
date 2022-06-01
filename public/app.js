@@ -14,6 +14,12 @@ function renderPhoneList() {
       });
     }
 
+    if (router.currentParams.items.color) {
+      phones = phones.filter(function (p) {
+        return p.color === router.currentParams.items.color;
+      });
+    }
+
     var html = phones.map(function (phone) {
       return "\n      <div class=\"card websy-trigger\" data-view=\"phonedetail?id=".concat(phone.id, "\" width=\"300px\">\n      \n      <img src=").concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <p class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></p>\n      \n      </div>\n      ");
     }).join('');
@@ -34,10 +40,7 @@ appleService.get('phones').then(function (phones) {
   }).join('');
   appleEl.innerHTML = html;
 });
-
-function sortPhonesAtoZ() {}
 /* global WebsyDesigns */
-
 
 var samsungEl = document.getElementById('samsung-phones');
 var samsungService = new WebsyDesigns.APIService('http://localhost:3000');
@@ -56,16 +59,7 @@ var detailService = new WebsyDesigns.APIService('http://localhost:3000');
 
 function renderPhoneDetail() {
   detailService.get('phones').then(function (phones) {
-    if (router.currentParams.items.brand) {
-      phones = phones.filter(function (p) {
-        return p.brand === router.currentParams.items.brand;
-      });
-    }
-
-    var html = phones.map(function (phone) {
-      return "\n      <div class=\"card websy-trigger\" data-view=\"phonedetail?id=".concat(phone.id, "\" width=\"300px\">\n      \n      <img src=").concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <p class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></p>\n      \n      </div>\n      ");
-    }).join('');
-    detail.innerHTML = html;
+    console.log('phones', phones);
   });
 }
 
@@ -93,26 +87,6 @@ var switchTest = new WebsyDesigns.Switch('dark-mode', {
     localStorage.setItem('darkMode', enableDarkMode ? 'enabled' : null);
     document.body.classList[enableDarkMode ? 'add' : 'remove']('dark-mode');
   }
-});
-var drop = new WebsyDesigns.WebsyDropdown('dropdown', {
-  label: 'test',
-  multiSelect: true,
-  onItemSelected: function onItemSelected(item, selectedIdexes, items) {
-    console.log(item, selectedIdexes, items);
-    router.addUrlParams({
-      test: item.test
-    });
-  },
-  items: [{
-    label: 'a',
-    test: 'cat'
-  }, {
-    label: 'b',
-    test: 'dog'
-  }, {
-    label: 'c',
-    test: 'pizza'
-  }]
 });
 var brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
   label: 'Brand',
@@ -144,5 +118,11 @@ var colorFilter = new WebsyDesigns.WebsyDropdown('dropdown-3', {
     label: 'Black'
   }, {
     label: 'White'
+  }, {
+    label: 'Blue'
+  }, {
+    label: 'Purple'
+  }, {
+    label: 'Red'
   }]
 });

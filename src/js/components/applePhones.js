@@ -17,7 +17,3 @@ appleService.get('phones').then(phones => {
   ).join('')
   appleEl.innerHTML = html
 })
-
-function sortPhonesAtoZ () {
-  
-}

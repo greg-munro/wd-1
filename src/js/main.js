@@ -34,23 +34,6 @@ const switchTest = new WebsyDesigns.Switch('dark-mode', {
 
 })
 
-const drop = new WebsyDesigns.WebsyDropdown('dropdown', {
-  label: 'test',
-  multiSelect: true,
-  onItemSelected: (item, selectedIdexes, items) => {
-    console.log(item, selectedIdexes, items)
-    router.addUrlParams({
-      test: item.test
-    })
-  },
-  items: [
-    {label: 'a', test: 'cat'},
-    {label: 'b', test: 'dog'},
-    {label: 'c', test: 'pizza'}
-
-  ]}
-)
-
 const brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
   label: 'Brand',
   multiSelect: true,
@@ -79,6 +62,9 @@ const colorFilter = new WebsyDesigns.WebsyDropdown('dropdown-3', {
   },
   items: [
     {label: 'Black'},
-    {label: 'White'}
+    {label: 'White'},
+    {label: 'Blue'},
+    {label: 'Purple'},
+    {label: 'Red'}
   ]}
 )
