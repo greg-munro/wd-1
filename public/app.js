@@ -52,14 +52,19 @@ samsungService.get('phones').then(function (phones) {
   }).join('');
   samsungEl.innerHTML = html;
 });
-/* global WebsyDesigns include router */
+/* global WebsyDesigns */
 
 var detail = document.getElementById('phonedetail');
 var detailService = new WebsyDesigns.APIService('http://localhost:3000');
 
 function renderPhoneDetail() {
   detailService.get('phones').then(function (phones) {
-    console.log('phones', phones);
+    var html = phones.filter(function (phone) {
+      return phone.id === '1';
+    }).map(function (phone) {
+      return "\n      <p>".concat(phone.name, "</p>\n      ");
+    });
+    detail.innerHTML = html;
   });
 }
 
