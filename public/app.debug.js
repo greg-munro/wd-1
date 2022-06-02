@@ -126,7 +126,7 @@ let darkMode = localStorage.getItem('darkMode')
 document.body.classList[darkMode === 'enabled' ? 'add' : 'remove']('dark-mode')
 
 const switchTest = new WebsyDesigns.Switch('dark-mode', {
-  label: '☀️/🌚',
+  label: '☀️ / 🌙',
   enabled: darkMode === 'enabled',
   onToggle: enableDarkMode => { 
     localStorage.setItem('darkMode', enableDarkMode ? 'enabled' : null)

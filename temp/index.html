@@ -7,23 +7,32 @@
   <link rel="stylesheet" href="/resources/app.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/external/@websy/websy-designs/dist/websy-designs.min.css">
+  <script src="https://kit.fontawesome.com/5e562d9010.js" crossorigin="anonymous"></script>
   <title>Websy Designs Phone Shop</title>
 </head>
 <body>
+
   <div class="flex">
   <nav>
    <a href="/">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/The-phone-house.svg/640px-The-phone-house.svg.png" alt="logo">
   </a>
+
+  <button class="hamburger" id="hamburger">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
     <ul>
     <li id="dark-mode"></li>
-    <li class="websy-trigger websy-btn btn-primary " data-view="home">Home</li>
     <li class="websy-trigger websy-btn btn-primary" data-view="apple">Apple</li>
     <li class="websy-trigger websy-btn btn-primary" data-view="samsung">Samsung</li>
     <li class="websy-trigger websy-btn btn-primary" data-view="stores">Store Locator</li>
+    <li class="websy-trigger cart" data-view="cart"><i class="fa-solid fa-basket-shopping"></i></li>
   </ul>
 </nav>
+
 </div>
+
 <section>
   <div class="websy-view" data-view="home">
 
@@ -46,7 +55,9 @@
       <p style="text-align: center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi aperiam similique praesentium doloremque dolores doloribus deserunt mollitia dolorum?
          Sed explicabo expedita voluptatibus officia officiis asperiores
           maiores ad architecto nobis reiciendis.</p>
+  <hr>
 
+          <h2 class="top-picks">Our Top Picks</h2>
   <div class="filters">
        <div id="dropdown-2"style="width: 150px; height: 50px; position: relative; text-align: center;">
 
@@ -57,6 +68,8 @@
         </div>
 
     </div>
+
+
     <div id="all-phones" class="cards-list">
             
            
@@ -75,6 +88,7 @@
     <div class="apple-logo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Apple_logo_hollow.svg/1720px-Apple_logo_hollow.svg.png" width="60px">
   </div>
+  <hr>
     <div id="apple-phones" class="cards-list">
 
     </div>
@@ -85,7 +99,7 @@
   <div class="samsung-logo">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/1280px-Samsung_Logo.svg.png" width="170px">
   </div>
-
+  <hr>
     <div id="samsung-phones" class="cards-list">
            
     </div>
@@ -117,6 +131,14 @@
             <h3>Find your nearest store</h3>
     
     </div>
+</section>
+<section>
+  <div class="websy-view" data-view="cart">
+    
+    <div class="cart-page">
+          <h3>Shopping Cart</h3>
+
+  </div>
 </section>
   <script src="/external/@websy/websy-designs/dist/websy-designs.debug.js"></script>
   <script src="/resources/app.debug.js"></script>
