@@ -36,7 +36,7 @@ appleService.get('phones').then(function (phones) {
   var html = phones.filter(function (phone) {
     return phone.brand === 'Apple';
   }).map(function (phone) {
-    return "\n    <div class=\"card\">\n    <img src=".concat(phone.image_url, " width=\"200px class=\"card--image\">\n    <div class=\"card--stats\">\n        <span class=\"card--star\">").concat(phone.rating, "</span>\n    </div>\n    <p class=\"card--title\">").concat(phone.name, "</p>\n    <p class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></p>\n    </div>\n    ");
+    return "\n    <div class=\"card websy-trigger\" data-view=\"phonedetail?id=".concat(phone.id, "\">\n    <img src=").concat(phone.image_url, " width=\"200px class=\"card--image\">\n    <div class=\"card--stats\">\n        <span class=\"card--star\">").concat(phone.rating, "</span>\n    </div>\n    <p class=\"card--title\">").concat(phone.name, "</p>\n    <p class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></p>\n    </div>\n    ");
   }).join('');
   appleEl.innerHTML = html;
 });
@@ -48,7 +48,7 @@ samsungService.get('phones').then(function (phones) {
   var html = phones.filter(function (phone) {
     return phone.brand === 'Samsung';
   }).map(function (phone) {
-    return "\n    <div class=\"card\">\n    <img src=".concat(phone.image_url, " width=\"200px class=\"card--image\">\n    <div class=\"card--stats\">\n        <span class=\"card--star\">").concat(phone.rating, "</span>\n    </div>\n    <p class=\"card--title\">").concat(phone.name, "</p>\n    <p class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></p>\n    </div>\n    ");
+    return "\n    <div class=\"card websy-trigger\" data-view=\"phonedetail?id=".concat(phone.id, "\">\n    <img src=").concat(phone.image_url, " width=\"200px class=\"card--image\">\n    <div class=\"card--stats\">\n        <span class=\"card--star\">").concat(phone.rating, "</span>\n    </div>\n    <p class=\"card--title\">").concat(phone.name, "</p>\n    <p class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></p>\n    </div>\n    ");
   }).join('');
   samsungEl.innerHTML = html;
 });
@@ -62,7 +62,7 @@ function renderPhoneDetail(id) {
     var html = phones.filter(function (phone) {
       return phone.id === +id;
     }).map(function (phone) {
-      return "\n      <p>".concat(phone.name, "</p>\n      ");
+      return "<div class=\"phone-detail-card\">\n      <div class=\"card\" width=\"300px\">\n      \n      <img src=".concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <h3 class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></h3>\n     <br/>\n     <p>In stock: ").concat(phone.in_stock, "</p>\n     <p>").concat(phone.detailed_description, "</p>\n      </div>\n      </div>\n      ");
     });
     detail.innerHTML = html;
   });
