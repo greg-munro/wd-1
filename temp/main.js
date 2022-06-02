@@ -93,7 +93,7 @@ function renderPhoneDetail (id) {
       <p class="card--title">${phone.name}</p>
       <h3 class="card--price"><span class="bold">${phone.price}</span></h3>
      <br/>
-     <button class="add-cart"><i class="fa-solid fa-cart-plus"></i></i></button>
+     <button class="add-cart" id="add-cart"><i class="fa-solid fa-cart-plus"></i>Add to cart</button>
      <p>${phone.detailed_description}</p>
       </div>
       </div>
@@ -104,6 +104,11 @@ function renderPhoneDetail (id) {
 }
 
 renderPhoneDetail()
+
+// const addToCartBtn = document.getElementById('add-cart')
+// addToCartBtn.addEventListener('click', () => {
+//   console.log('clicked')
+// })
 
 
 // router initialisation
@@ -126,7 +131,7 @@ let darkMode = localStorage.getItem('darkMode')
 document.body.classList[darkMode === 'enabled' ? 'add' : 'remove']('dark-mode')
 
 const switchTest = new WebsyDesigns.Switch('dark-mode', {
-  label: '☀️ / 🌙',
+  label: '☀️/🌙',
   enabled: darkMode === 'enabled',
   onToggle: enableDarkMode => { 
     localStorage.setItem('darkMode', enableDarkMode ? 'enabled' : null)

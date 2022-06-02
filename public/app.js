@@ -62,13 +62,17 @@ function renderPhoneDetail(id) {
     var html = phones.filter(function (phone) {
       return phone.id === +id;
     }).map(function (phone) {
-      return "<div class=\"phone-detail-card\">\n      <div class=\"card\" width=\"300px\">\n      \n      <img src=".concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <h3 class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></h3>\n     <br/>\n     <button class=\"add-cart\"><i class=\"fa-solid fa-cart-plus\"></i></i></button>\n     <p>").concat(phone.detailed_description, "</p>\n      </div>\n      </div>\n      ");
+      return "<div class=\"phone-detail-card\">\n      <div class=\"card\" width=\"300px\">\n      \n      <img src=".concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <h3 class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></h3>\n     <br/>\n     <button class=\"add-cart\" id=\"add-cart\"><i class=\"fa-solid fa-cart-plus\"></i>Add to cart</button>\n     <p>").concat(phone.detailed_description, "</p>\n      </div>\n      </div>\n      ");
     });
     detail.innerHTML = html;
   });
 }
 
-renderPhoneDetail(); // router initialisation
+renderPhoneDetail(); // const addToCartBtn = document.getElementById('add-cart')
+// addToCartBtn.addEventListener('click', () => {
+//   console.log('clicked')
+// })
+// router initialisation
 
 var options = {
   defaultView: 'home'
@@ -86,7 +90,7 @@ router.init();
 var darkMode = localStorage.getItem('darkMode');
 document.body.classList[darkMode === 'enabled' ? 'add' : 'remove']('dark-mode');
 var switchTest = new WebsyDesigns.Switch('dark-mode', {
-  label: '☀️ / 🌙',
+  label: '☀️/🌙',
   enabled: darkMode === 'enabled',
   onToggle: function onToggle(enableDarkMode) {
     localStorage.setItem('darkMode', enableDarkMode ? 'enabled' : null);

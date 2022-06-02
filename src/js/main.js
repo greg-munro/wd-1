@@ -4,6 +4,7 @@ include('./components/phonesList.js')
 include('./components/applePhones.js')
 include('./components/samsungPhones.js')
 include('./components/phoneDetail.js')
+include('./components/shoppingCart.js')
 
 // router initialisation
 const options = {
@@ -25,7 +26,7 @@ let darkMode = localStorage.getItem('darkMode')
 document.body.classList[darkMode === 'enabled' ? 'add' : 'remove']('dark-mode')
 
 const switchTest = new WebsyDesigns.Switch('dark-mode', {
-  label: '☀️ / 🌙',
+  label: '☀️/🌙',
   enabled: darkMode === 'enabled',
   onToggle: enableDarkMode => { 
     localStorage.setItem('darkMode', enableDarkMode ? 'enabled' : null)
