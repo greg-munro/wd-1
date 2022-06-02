@@ -1,6 +1,18 @@
 <div class="websy-view" data-view="stores">
   
     <div class="store-map">
-          <h3>Find your nearest store</h3>
+          <h3 style="text-align: center">Find your nearest store</h3>
   
+          
+    <div id="map" style="width: 400px; height: 300px;">
+        <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ211bnJvOTAiLCJhIjoiY2wzdnF2Zm5tMHUydTNrbnA1ZWRpaWdjdCJ9.DRqgJWIIYejdOXaD5S1DtQ';
+        const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [2.2, 41.400], // starting position [lng, lat]
+        zoom: 10// starting zoom
+        });
+        </script>
+</div>
   </div>

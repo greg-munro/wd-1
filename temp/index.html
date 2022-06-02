@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/external/@websy/websy-designs/dist/websy-designs.min.css">
   <script src="https://kit.fontawesome.com/5e562d9010.js" crossorigin="anonymous"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet" />
   <title>Websy Designs Phone Shop</title>
 </head>
 <body>
@@ -52,6 +54,7 @@
   <div class="jumbotron jumbotron-fluid">
     <h3 style="text-align: center">Mobile phone shop, tariffs, information, online technology & much more!</h3>
   </div>
+
 
     <p style="text-align: center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
       Ratione et possimus dolor quaerat, culpa quos aperiam
@@ -116,8 +119,20 @@
   <div class="websy-view" data-view="stores">
     
       <div class="store-map">
-            <h3>Find your nearest store</h3>
+            <h3 style="text-align: center">Find your nearest store</h3>
     
+            
+      <div id="map" style="width: 400px; height: 300px;">
+          <script>
+          mapboxgl.accessToken = 'pk.eyJ1IjoiZ211bnJvOTAiLCJhIjoiY2wzdnF2Zm5tMHUydTNrbnA1ZWRpaWdjdCJ9.DRqgJWIIYejdOXaD5S1DtQ';
+          const map = new mapboxgl.Map({
+          container: 'map', // container ID
+          style: 'mapbox://styles/mapbox/streets-v11', // style URL
+          center: [2.2, 41.400], // starting position [lng, lat]
+          zoom: 10// starting zoom
+          });
+          </script>
+  </div>
     </div>
 </section>
 <section>
@@ -134,16 +149,28 @@
   <div class="websy-view" data-view="stores">
     
       <div class="store-map">
-            <h3>Find your nearest store</h3>
+            <h3 style="text-align: center">Find your nearest store</h3>
     
+            
+      <div id="map" style="width: 400px; height: 300px;">
+          <script>
+          mapboxgl.accessToken = 'pk.eyJ1IjoiZ211bnJvOTAiLCJhIjoiY2wzdnF2Zm5tMHUydTNrbnA1ZWRpaWdjdCJ9.DRqgJWIIYejdOXaD5S1DtQ';
+          const map = new mapboxgl.Map({
+          container: 'map', // container ID
+          style: 'mapbox://styles/mapbox/streets-v11', // style URL
+          center: [2.2, 41.400], // starting position [lng, lat]
+          zoom: 10// starting zoom
+          });
+          </script>
+  </div>
     </div>
 </section>
 <section>
   <div class="websy-view" data-view="cart">
     
     <div class="cart-page">
-          <h3>Shopping Cart</h3>
-
+          <h3 class="cart-text">Shopping Cart</h3>
+  <p>Your cart is empty! <u><a class="websy-trigger" data-view="home">Take a look around...</a></u></p>
   </div>
 </section>
 <footer>
