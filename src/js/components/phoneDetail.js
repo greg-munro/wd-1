@@ -17,7 +17,7 @@ function renderPhoneDetail (id) {
       <p class="card--title">${phone.name}</p>
       <h3 class="card--price"><span class="bold">${phone.price}</span></h3>
      <br/>
-     <p>In stock: ${phone.in_stock}</p>
+     <button class="add-cart">Add to Cart   <i class="fa-solid fa-plus"></i></button>
      <p>${phone.detailed_description}</p>
       </div>
       </div>
