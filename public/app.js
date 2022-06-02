@@ -57,10 +57,10 @@ samsungService.get('phones').then(function (phones) {
 var detail = document.getElementById('phonedetail');
 var detailService = new WebsyDesigns.APIService('http://localhost:3000');
 
-function renderPhoneDetail() {
+function renderPhoneDetail(id) {
   detailService.get('phones').then(function (phones) {
     var html = phones.filter(function (phone) {
-      return phone.id === '1';
+      return phone.id === +id;
     }).map(function (phone) {
       return "\n      <p>".concat(phone.name, "</p>\n      ");
     });
