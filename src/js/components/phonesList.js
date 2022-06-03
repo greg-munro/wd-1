@@ -5,7 +5,7 @@ const el = document.getElementById('all-phones')
 const apiService = new WebsyDesigns.APIService('http://localhost:3000')
 function renderPhoneList () {
   apiService.get('phones').then(phones => {
-    if (router.currentParams.items.brand) {
+    if (router.currentParams.items.brand && router.currentParams.items.brand !== '') {
       phones = phones.filter(p => p.brand === router.currentParams.items.brand)
     }
     if (router.currentParams.items.color) {

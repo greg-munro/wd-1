@@ -8,7 +8,7 @@ var apiService = new WebsyDesigns.APIService('http://localhost:3000');
 
 function renderPhoneList() {
   apiService.get('phones').then(function (phones) {
-    if (router.currentParams.items.brand) {
+    if (router.currentParams.items.brand && router.currentParams.items.brand !== '') {
       phones = phones.filter(function (p) {
         return p.brand === router.currentParams.items.brand;
       });
@@ -72,7 +72,10 @@ renderPhoneDetail(); // const addToCartBtn = document.getElementById('add-cart')
 // addToCartBtn.addEventListener('click', () => {
 //   console.log('clicked')
 // })
-// router initialisation
+
+document.addEventListener('click', function (event) {
+  console.log(event.target.id, event.target.classList);
+}); // router initialisation
 
 var options = {
   defaultView: 'home'
@@ -107,6 +110,12 @@ var brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
     });
     renderPhoneList();
   },
+  onClearSelected: function onClearSelected() {
+    router.addUrlParams({
+      brand: ''
+    });
+    renderPhoneList();
+  },
   items: [{
     label: 'Apple'
   }, {
@@ -135,3 +144,18 @@ var colorFilter = new WebsyDesigns.WebsyDropdown('dropdown-3', {
     label: 'Red'
   }]
 });
+var coll = document.getElementsByClassName('collapsible');
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener('click', function () {
+    this.classList.toggle('active');
+    var content = this.nextElementSibling;
+
+    if (content.style.display === 'block') {
+      content.style.display = 'none';
+    } else {
+      content.style.display = 'block';
+    }
+  });
+}

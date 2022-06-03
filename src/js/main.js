@@ -44,6 +44,12 @@ const brandFilter = new WebsyDesigns.WebsyDropdown('dropdown-2', {
       brand: item.label
     })
     renderPhoneList()
+  }, 
+  onClearSelected: () => {
+    router.addUrlParams({
+      brand: ''
+    })
+    renderPhoneList()
   },
   items: [
     {label: 'Apple'},
@@ -69,3 +75,19 @@ const colorFilter = new WebsyDesigns.WebsyDropdown('dropdown-3', {
     {label: 'Red'}
   ]}
 )
+
+let coll = document.getElementsByClassName('collapsible')
+let i
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener('click', function () {
+    this.classList.toggle('active')
+    let content = this.nextElementSibling
+    if (content.style.display === 'block') {
+      content.style.display = 'none'
+    } 
+    else {
+      content.style.display = 'block'
+    }
+  })
+}
