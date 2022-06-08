@@ -29,6 +29,22 @@ function renderPhoneList () {
       `)
     ).join('')
     el.innerHTML = html
+
+    // initiate cart
+    const shoppingCart = document.getElementById('shopping-cart')
+    let cart = []
+    
+    function addToCart () {
+      cart.push(phones)
+      console.log(cart)
+    }
+    
+    document.addEventListener('click', (event) => {
+      if (event.target.classList.value === 'add-cart') {
+        addToCart()
+      }
+    }) 
+    shoppingCart.innerHTML = `` 
   })
 }
 
@@ -105,14 +121,7 @@ function renderPhoneDetail (id) {
 
 renderPhoneDetail()
 
-// const addToCartBtn = document.getElementById('add-cart')
-// addToCartBtn.addEventListener('click', () => {
-//   console.log('clicked')
-// })
-
-document.addEventListener('click', (event) => {
-  console.log(event.target.id, event.target.classList)
-})
+/* global WebsyDesigns */
 
 
 // router initialisation

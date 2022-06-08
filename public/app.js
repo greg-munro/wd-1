@@ -23,7 +23,22 @@ function renderPhoneList() {
     var html = phones.map(function (phone) {
       return "\n      <div class=\"card websy-trigger\" data-view=\"phonedetail?id=".concat(phone.id, "\" width=\"300px\">\n      \n      <img src=").concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <p class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></p>\n      \n      </div>\n      ");
     }).join('');
-    el.innerHTML = html;
+    el.innerHTML = html; // initiate cart
+
+    var shoppingCart = document.getElementById('shopping-cart');
+    var cart = [];
+
+    function addToCart() {
+      cart.push(phones);
+      console.log(cart);
+    }
+
+    document.addEventListener('click', function (event) {
+      if (event.target.classList.value === 'add-cart') {
+        addToCart();
+      }
+    });
+    shoppingCart.innerHTML = "";
   });
 }
 
@@ -68,14 +83,9 @@ function renderPhoneDetail(id) {
   });
 }
 
-renderPhoneDetail(); // const addToCartBtn = document.getElementById('add-cart')
-// addToCartBtn.addEventListener('click', () => {
-//   console.log('clicked')
-// })
-
-document.addEventListener('click', function (event) {
-  console.log(event.target.id, event.target.classList);
-}); // router initialisation
+renderPhoneDetail();
+/* global WebsyDesigns */
+// router initialisation
 
 var options = {
   defaultView: 'home'

@@ -27,6 +27,22 @@ function renderPhoneList () {
       `)
     ).join('')
     el.innerHTML = html
+
+    // initiate cart
+    const shoppingCart = document.getElementById('shopping-cart')
+    let cart = []
+    
+    function addToCart () {
+      cart.push(phones)
+      console.log(cart)
+    }
+    
+    document.addEventListener('click', (event) => {
+      if (event.target.classList.value === 'add-cart') {
+        addToCart()
+      }
+    }) 
+    shoppingCart.innerHTML = `` 
   })
 }
 
