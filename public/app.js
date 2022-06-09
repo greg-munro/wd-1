@@ -81,7 +81,7 @@ function addToCart(id) {
   });
   cart.push(item);
   console.log(cart);
-  shoppingCart.innerHTML = "\n    <h1>".concat(item.name, "</h1>\n      <img src=").concat(item.image_url, " width=\"200px\">\n  ");
+  shoppingCart.innerHTML += "\n    <h1>".concat(item.name, "</h1>\n      <img src=").concat(item.image_url, " width=\"200px\">\n  ");
 } // /* global WebsyDesigns include */
 // include('./phoneDetail.js')
 // shoppingCart.innerHTML = `<div>

@@ -115,7 +115,7 @@ function addToCart (id) {
   const item = data.find((phone) => phone.id === id)
   cart.push(item)
   console.log(cart)
-  shoppingCart.innerHTML = 
+  shoppingCart.innerHTML += 
   `
     <h1>${item.name}</h1>
       <img src=${item.image_url} width="200px">
