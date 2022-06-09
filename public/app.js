@@ -73,8 +73,8 @@ function renderPhoneDetail(id) {
 
 renderPhoneDetail(); // initiate cart
 
-var cart = [];
-var keepCart = window.localStorage.getItem('shopping-cart');
+var cart = [''];
+var updateCart = window.localStorage.getItem('updateCart');
 
 function addToCart(id) {
   var item = data.find(function (phone) {
@@ -83,7 +83,7 @@ function addToCart(id) {
   cart.push(item);
   console.log(cart);
   shoppingCart.innerHTML += "\n    <h1>".concat(item.name, "</h1>\n      <img src=").concat(item.image_url, " width=\"200px\">\n  ");
-  window.localStorage.setItem('shopping-cart', cart);
+  window.localStorage.setItem('updateCart', addToCart);
 } // /* global WebsyDesigns include */
 // include('./phoneDetail.js')
 // shoppingCart.innerHTML = `<div>
