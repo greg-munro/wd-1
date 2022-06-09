@@ -110,6 +110,7 @@ renderPhoneDetail()
 
 // initiate cart
 let cart = []
+let keepCart = window.localStorage.getItem('shopping-cart')
 
 function addToCart (id) {
   const item = data.find((phone) => phone.id === id)
@@ -120,6 +121,7 @@ function addToCart (id) {
     <h1>${item.name}</h1>
       <img src=${item.image_url} width="200px">
   `
+  window.localStorage.setItem('shopping-cart', cart)
 } 
 
 // /* global WebsyDesigns include */

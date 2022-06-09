@@ -74,6 +74,7 @@ function renderPhoneDetail(id) {
 renderPhoneDetail(); // initiate cart
 
 var cart = [];
+var keepCart = window.localStorage.getItem('shopping-cart');
 
 function addToCart(id) {
   var item = data.find(function (phone) {
@@ -82,6 +83,7 @@ function addToCart(id) {
   cart.push(item);
   console.log(cart);
   shoppingCart.innerHTML += "\n    <h1>".concat(item.name, "</h1>\n      <img src=").concat(item.image_url, " width=\"200px\">\n  ");
+  window.localStorage.setItem('shopping-cart', cart);
 } // /* global WebsyDesigns include */
 // include('./phoneDetail.js')
 // shoppingCart.innerHTML = `<div>
