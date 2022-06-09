@@ -23,22 +23,7 @@ function renderPhoneList() {
     var html = phones.map(function (phone) {
       return "\n      <div class=\"card websy-trigger\" data-view=\"phonedetail?id=".concat(phone.id, "\" width=\"300px\">\n      \n      <img src=").concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <p class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></p>\n      \n      </div>\n      ");
     }).join('');
-    el.innerHTML = html; // initiate cart
-
-    var shoppingCart = document.getElementById('shopping-cart');
-    var cart = [];
-
-    function addToCart() {
-      cart.push(phones);
-      console.log(cart);
-    }
-
-    document.addEventListener('click', function (event) {
-      if (event.target.classList.value === 'add-cart') {
-        addToCart();
-      }
-    });
-    shoppingCart.innerHTML = "";
+    el.innerHTML = html;
   });
 }
 
@@ -70,22 +55,39 @@ samsungService.get('phones').then(function (phones) {
 /* global WebsyDesigns */
 
 var detail = document.getElementById('phonedetail');
+var shoppingCart = document.getElementById('shopping-cart');
 var detailService = new WebsyDesigns.APIService('http://localhost:3000');
+var data;
 
 function renderPhoneDetail(id) {
   detailService.get('phones').then(function (phones) {
+    data = phones;
     var html = phones.filter(function (phone) {
       return phone.id === +id;
     }).map(function (phone) {
-      return "<div class=\"phone-detail-card\">\n      <div class=\"card\" width=\"300px\">\n      \n      <img src=".concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <h3 class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></h3>\n     <br/>\n     <button class=\"add-cart\" id=\"add-cart\"><i class=\"fa-solid fa-cart-plus\"></i>Add to cart</button>\n     <p>").concat(phone.detailed_description, "</p>\n      </div>\n      </div>\n      ");
+      return "<div class=\"phone-detail-card\">\n      <div class=\"card\" width=\"300px\">\n      \n      <img src=".concat(phone.image_url, " width=\"200px class=\"card--image\">\n      \n      <div class=\"card--stats\">\n          <span class=\"card--star\">").concat(phone.rating, "</span>\n      </div>\n      <p class=\"card--title\">").concat(phone.name, "</p>\n      <h3 class=\"card--price\"><span class=\"bold\">").concat(phone.price, "</span></h3>\n     <br/>\n     <button class=\"add-cart\" id=\"add-cart\" onclick=\"addToCart(").concat(phone.id, ")\"><i class=\"fa-solid fa-cart-plus\"></i>Add to cart</button>\n     <p>").concat(phone.detailed_description, "</p>\n      </div>\n      </div>\n      ");
     });
     detail.innerHTML = html;
   });
 }
 
-renderPhoneDetail();
-/* global WebsyDesigns */
+renderPhoneDetail(); // initiate cart
+
+var cart = [];
+
+function addToCart(id) {
+  var item = data.find(function (phone) {
+    return phone.id === id;
+  });
+  cart.push(item);
+  console.log(cart);
+  shoppingCart.innerHTML = "\n    <h1>".concat(item.name, "</h1>\n      <img src=").concat(item.image_url, " width=\"200px\">\n  ");
+} // /* global WebsyDesigns include */
+// include('./phoneDetail.js')
+// shoppingCart.innerHTML = `<div>
+// </div>`
 // router initialisation
+
 
 var options = {
   defaultView: 'home'

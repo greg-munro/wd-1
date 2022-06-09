@@ -29,22 +29,6 @@ function renderPhoneList () {
       `)
     ).join('')
     el.innerHTML = html
-
-    // initiate cart
-    const shoppingCart = document.getElementById('shopping-cart')
-    let cart = []
-    
-    function addToCart () {
-      cart.push(phones)
-      console.log(cart)
-    }
-    
-    document.addEventListener('click', (event) => {
-      if (event.target.classList.value === 'add-cart') {
-        addToCart()
-      }
-    }) 
-    shoppingCart.innerHTML = `` 
   })
 }
 
@@ -93,10 +77,14 @@ samsungService.get('phones').then(phones => {
 /* global WebsyDesigns */ 
 
 const detail = document.getElementById('phonedetail')
+const shoppingCart = document.getElementById('shopping-cart')
 
 const detailService = new WebsyDesigns.APIService('http://localhost:3000')
+let data 
+
 function renderPhoneDetail (id) {
   detailService.get('phones').then(phones => {
+    data = phones
     let html = phones.filter(phone => phone.id === +id).map(phone => 
       (`<div class="phone-detail-card">
       <div class="card" width="300px">
@@ -109,7 +97,7 @@ function renderPhoneDetail (id) {
       <p class="card--title">${phone.name}</p>
       <h3 class="card--price"><span class="bold">${phone.price}</span></h3>
      <br/>
-     <button class="add-cart" id="add-cart"><i class="fa-solid fa-cart-plus"></i>Add to cart</button>
+     <button class="add-cart" id="add-cart" onclick="addToCart(${phone.id})"><i class="fa-solid fa-cart-plus"></i>Add to cart</button>
      <p>${phone.detailed_description}</p>
       </div>
       </div>
@@ -118,10 +106,28 @@ function renderPhoneDetail (id) {
     detail.innerHTML = html
   })
 }
-
 renderPhoneDetail()
 
-/* global WebsyDesigns */
+// initiate cart
+let cart = []
+
+function addToCart (id) {
+  const item = data.find((phone) => phone.id === id)
+  cart.push(item)
+  console.log(cart)
+  shoppingCart.innerHTML = 
+  `
+    <h1>${item.name}</h1>
+      <img src=${item.image_url} width="200px">
+  `
+} 
+
+// /* global WebsyDesigns include */
+// include('./phoneDetail.js')
+
+// shoppingCart.innerHTML = `<div>
+
+// </div>`
 
 
 // router initialisation
