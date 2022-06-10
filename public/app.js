@@ -52,7 +52,7 @@ samsungService.get('phones').then(function (phones) {
   }).join('');
   samsungEl.innerHTML = html;
 });
-/* global WebsyDesigns */
+/* global WebsyDesigns localStorage */
 
 var detail = document.getElementById('phonedetail');
 var shoppingCart = document.getElementById('shopping-cart');
@@ -73,8 +73,18 @@ function renderPhoneDetail(id) {
 
 renderPhoneDetail(); // initiate cart
 
-var cart = [''];
-var updateCart = window.localStorage.getItem('updateCart');
+var cart = [];
+var updateCart = localStorage.getItem('updateCart');
+
+if (updateCart !== '') {
+  updateCart = JSON.parse(updateCart);
+  detailService.get('phones').then(function (phones) {
+    data = phones;
+    updateCart.forEach(function (item) {
+      return addToCart(item.id);
+    });
+  });
+}
 
 function addToCart(id) {
   var item = data.find(function (phone) {
@@ -83,7 +93,7 @@ function addToCart(id) {
   cart.push(item);
   console.log(cart);
   shoppingCart.innerHTML += "\n    <h1>".concat(item.name, "</h1>\n      <img src=").concat(item.image_url, " width=\"200px\">\n  ");
-  window.localStorage.setItem('updateCart', addToCart);
+  localStorage.setItem('updateCart', JSON.stringify(cart));
 } // /* global WebsyDesigns include */
 // include('./phoneDetail.js')
 // shoppingCart.innerHTML = `<div>

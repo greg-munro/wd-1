@@ -1,4 +1,4 @@
-/* global WebsyDesigns */ 
+/* global WebsyDesigns localStorage */ 
 
 const detail = document.getElementById('phonedetail')
 const shoppingCart = document.getElementById('shopping-cart')
@@ -33,8 +33,17 @@ function renderPhoneDetail (id) {
 renderPhoneDetail()
 
 // initiate cart
-let cart = ['']
-let updateCart = window.localStorage.getItem('updateCart')
+let cart = []
+let updateCart = localStorage.getItem('updateCart')
+
+if (updateCart !== '') {
+  updateCart = JSON.parse(updateCart)
+  detailService.get('phones').then(phones => {
+    data = phones
+    updateCart.forEach(item => addToCart(item.id))
+  })
+}
+
 function addToCart (id) {
   const item = data.find((phone) => phone.id === id)
   cart.push(item)
@@ -44,5 +53,5 @@ function addToCart (id) {
     <h1>${item.name}</h1>
       <img src=${item.image_url} width="200px">
   `
-  window.localStorage.setItem('updateCart', addToCart)
+  localStorage.setItem('updateCart', JSON.stringify(cart))
 } 
