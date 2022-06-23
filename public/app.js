@@ -92,7 +92,7 @@ function addToCart(id) {
   });
   cart.push(item);
   console.log(cart);
-  shoppingCart.innerHTML += "\n    <h1>".concat(item.name, "</h1>\n      <img src=").concat(item.image_url, " width=\"200px\">\n  ");
+  shoppingCart.innerHTML += " <div class=\"cart-list\"> <div class=\"cart-item\"> \n\n      <h3>".concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <p>").concat(item.price, "</p>\n  </div></div>");
   localStorage.setItem('updateCart', JSON.stringify(cart));
 } // /* global WebsyDesigns include */
 // include('./phoneDetail.js')

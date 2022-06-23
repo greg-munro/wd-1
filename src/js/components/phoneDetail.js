@@ -49,9 +49,13 @@ function addToCart (id) {
   cart.push(item)
   console.log(cart)
   shoppingCart.innerHTML += 
-  `
-    <h1>${item.name}</h1>
+
+  ` <div class="cart-list"> <div class="cart-item"> 
+
+      <h3>${item.name}</h3>
       <img src=${item.image_url} width="200px">
-  `
+      <p>${item.description}</p>
+      <p>${item.price}</p>
+  </div></div>`
   localStorage.setItem('updateCart', JSON.stringify(cart))
 } 
