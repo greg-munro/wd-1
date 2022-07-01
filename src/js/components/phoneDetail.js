@@ -2,6 +2,7 @@
 
 const detail = document.getElementById('phonedetail')
 const shoppingCart = document.getElementById('shopping-cart')
+let countEl = document.getElementById('item-count')
 
 const detailService = new WebsyDesigns.APIService('http://localhost:3000')
 let data 
@@ -34,6 +35,7 @@ renderPhoneDetail()
 
 // initiate cart
 let cart = []
+let count = 0
 let updateCart = localStorage.getItem('updateCart')
 
 if (updateCart !== '') {
@@ -56,6 +58,25 @@ function addToCart (id) {
       <img src=${item.image_url} width="200px">
       <p>${item.description}</p>
       <p>${item.price}</p>
+      <button onclick="removeFromCart()">Remove</button>
   </div></div>`
   localStorage.setItem('updateCart', JSON.stringify(cart))
+  increment()
 } 
+
+function increment () {
+  count += 1
+  countEl.textContent = count
+}
+
+function removeFromCart (id) {
+  const item = data.find((phone) => phone.id === id)
+  cart.filter(item => item.id)
+  // shoppingCart.innerHTML -= item 
+  console.log(cart)
+}
+
+function decrement () {
+  count -= 1
+  countEl.textContent = count
+}

@@ -56,6 +56,7 @@ samsungService.get('phones').then(function (phones) {
 
 var detail = document.getElementById('phonedetail');
 var shoppingCart = document.getElementById('shopping-cart');
+var countEl = document.getElementById('item-count');
 var detailService = new WebsyDesigns.APIService('http://localhost:3000');
 var data;
 
@@ -74,6 +75,7 @@ function renderPhoneDetail(id) {
 renderPhoneDetail(); // initiate cart
 
 var cart = [];
+var count = 0;
 var updateCart = localStorage.getItem('updateCart');
 
 if (updateCart !== '') {
@@ -92,13 +94,31 @@ function addToCart(id) {
   });
   cart.push(item);
   console.log(cart);
-  shoppingCart.innerHTML += " <div class=\"cart-list\"> <div class=\"cart-item\"> \n\n      <h3>".concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <p>").concat(item.price, "</p>\n  </div></div>");
+  shoppingCart.innerHTML += " <div class=\"cart-list\"> <div class=\"cart-item\"> \n\n      <h3>".concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <p>").concat(item.price, "</p>\n      <button onclick=\"removeFromCart()\">Remove</button>\n  </div></div>");
   localStorage.setItem('updateCart', JSON.stringify(cart));
-} // /* global WebsyDesigns include */
-// include('./phoneDetail.js')
-// shoppingCart.innerHTML = `<div>
-// </div>`
-// router initialisation
+  increment();
+}
+
+function increment() {
+  count += 1;
+  countEl.textContent = count;
+}
+
+function removeFromCart(id) {
+  var item = data.find(function (phone) {
+    return phone.id === id;
+  });
+  cart.filter(function (item) {
+    return item.id;
+  }); // shoppingCart.innerHTML -= item 
+
+  console.log(cart);
+}
+
+function decrement() {
+  count -= 1;
+  countEl.textContent = count;
+} // router initialisation
 
 
 var options = {
