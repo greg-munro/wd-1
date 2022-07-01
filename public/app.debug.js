@@ -119,6 +119,7 @@ if (updateCart !== '') {
   detailService.get('phones').then(phones => {
     data = phones
     updateCart.forEach(item => addToCart(item.id))
+    // updateCart.forEach(item => removeFromCart(item.id))
   })
 }
 
@@ -149,6 +150,7 @@ function removeFromCart (id) {
   const item = data.find((phone) => phone.id === id)
   cart.filter(item => item.id)
   // shoppingCart.innerHTML -= item 
+  decrement()
 }
 
 function decrement () {
@@ -156,7 +158,12 @@ function decrement () {
     count -= 1
     countEl.textContent = count
   }
+  localStorage.setItem('updateCart', JSON.stringify(cart))
 }
+
+// if (count === 0) {
+//   countEl.classList.toggle('test')
+// }
 
 
 // router initialisation

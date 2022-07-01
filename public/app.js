@@ -84,7 +84,7 @@ if (updateCart !== '') {
     data = phones;
     updateCart.forEach(function (item) {
       return addToCart(item.id);
-    });
+    }); // updateCart.forEach(item => removeFromCart(item.id))
   });
 }
 
@@ -111,6 +111,8 @@ function removeFromCart(id) {
   cart.filter(function (item) {
     return item.id;
   }); // shoppingCart.innerHTML -= item 
+
+  decrement();
 }
 
 function decrement() {
@@ -118,7 +120,12 @@ function decrement() {
     count -= 1;
     countEl.textContent = count;
   }
-} // router initialisation
+
+  localStorage.setItem('updateCart', JSON.stringify(cart));
+} // if (count === 0) {
+//   countEl.classList.toggle('test')
+// }
+// router initialisation
 
 
 var options = {
