@@ -94,7 +94,7 @@ function addToCart(id) {
   });
   cart.push(item);
   console.log(cart);
-  shoppingCart.innerHTML += " <div class=\"cart-list\"> <div class=\"cart-item\"> \n\n      <h3>".concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <p>").concat(item.price, "</p>\n      <button onclick=\"removeFromCart()\">Remove</button>\n  </div></div>");
+  shoppingCart.innerHTML += " <div class=\"cart-list\"> <div class=\"cart-item\"> \n\n      <h3>".concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <p>").concat(item.price, "</p>\n      <button onclick=\"decrement()\">Remove</button>\n  </div></div>");
   localStorage.setItem('updateCart', JSON.stringify(cart));
   increment();
 }
@@ -111,13 +111,13 @@ function removeFromCart(id) {
   cart.filter(function (item) {
     return item.id;
   }); // shoppingCart.innerHTML -= item 
-
-  console.log(cart);
 }
 
 function decrement() {
-  count -= 1;
-  countEl.textContent = count;
+  if (count > 0) {
+    count -= 1;
+    countEl.textContent = count;
+  }
 } // router initialisation
 
 

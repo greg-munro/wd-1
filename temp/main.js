@@ -134,7 +134,7 @@ function addToCart (id) {
       <img src=${item.image_url} width="200px">
       <p>${item.description}</p>
       <p>${item.price}</p>
-      <button onclick="removeFromCart()">Remove</button>
+      <button onclick="decrement()">Remove</button>
   </div></div>`
   localStorage.setItem('updateCart', JSON.stringify(cart))
   increment()
@@ -149,12 +149,13 @@ function removeFromCart (id) {
   const item = data.find((phone) => phone.id === id)
   cart.filter(item => item.id)
   // shoppingCart.innerHTML -= item 
-  console.log(cart)
 }
 
 function decrement () {
-  count -= 1
-  countEl.textContent = count
+  if (count > 0) {
+    count -= 1
+    countEl.textContent = count
+  }
 }
 
 
