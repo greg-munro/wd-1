@@ -134,7 +134,7 @@ function addToCart (id) {
       <h3>${item.name}</h3>
       <img src=${item.image_url} width="200px">
       <p>${item.description}</p>
-      <p>${item.price}</p>
+      <b><p>${item.price}</p></b>
       <button onclick="decrement()">Remove</button>
   </div></div>`
   localStorage.setItem('updateCart', JSON.stringify(cart))
