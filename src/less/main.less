@@ -43,11 +43,23 @@ nav {
     background-color: transparent;
     fill: rgb(249, 239, 239);
     display: flex;
+    cursor: pointer;
   }
   .central-triggers {
     display: none;
   }
-  .right-triggers {
+  .central-triggers.show {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
+  }
+  .right-triggers.show {
+    display: flex;
+  }
+  #home-img {
     display: none;
   }
 }

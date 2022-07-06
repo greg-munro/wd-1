@@ -210,3 +210,14 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
+var hamBtn = document.getElementById('hamburger');
+var navList = document.getElementById('cent');
+var rightBtns = document.getElementById('right');
+
+function toggleButton() {
+  navList.classList.toggle('show');
+  rightBtns.classList.toggle('show');
+}
+
+hamBtn.addEventListener('click', toggleButton);

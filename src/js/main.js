@@ -90,3 +90,14 @@ for (i = 0; i < coll.length; i++) {
     }
   })
 }
+
+const hamBtn = document.getElementById('hamburger')
+const navList = document.getElementById('cent')
+const rightBtns = document.getElementById('right')
+
+function toggleButton () {
+  navList.classList.toggle('show')
+  rightBtns.classList.toggle('show')
+}
+
+hamBtn.addEventListener('click', toggleButton)
