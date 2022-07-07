@@ -1,6 +1,13 @@
 "use strict";
 
-/* global WebsyDesigns include localStorage renderPhoneDetail renderPhoneList */
+/* global
+ WebsyDesigns
+include 
+localStorage
+renderPhoneDetail 
+renderPhoneList
+WebsyCarousel 
+*/
 
 /* global WebsyDesigns router */
 var el = document.getElementById('all-phones');
@@ -94,7 +101,7 @@ function addToCart(id) {
   });
   cart.push(item);
   console.log(cart);
-  shoppingCart.innerHTML += " <div class=\"cart-list\"> <div class=\"cart-item\"> \n\n      <h3>".concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <b><p>").concat(item.price, "</p></b>\n      <button onclick=\"decrement()\">Remove</button>\n  </div></div>");
+  shoppingCart.innerHTML += " <div class=\"cart-list\"> <div class=\"cart-item\"> \n\n      <h3>".concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <b><p>").concat(item.price, "</p></b>\n      <button class=\"remove-btn\" onclick=\"decrement()\">Remove</button>\n  </div></div>");
   localStorage.setItem('updateCart', JSON.stringify(cart));
   increment();
 }
@@ -221,3 +228,68 @@ function toggleButton() {
 }
 
 hamBtn.addEventListener('click', toggleButton);
+var optionsCarousel = {
+  showPrevNext: false,
+  frames: [{
+    images: [{
+      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255238/5b1d5d879ef142125913db3a',
+      style: 'background-size: cover; background-position: center;'
+    }],
+    text: [{
+      html: "<div></div>",
+      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+      classes: 'murky-bg'
+    }]
+  }, {
+    images: [{
+      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1601975921/18',
+      style: 'background-size: cover; background-position: center;'
+    }],
+    text: [{
+      html: "<div></div>",
+      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+      classes: 'murky-bg'
+    }]
+  }, {
+    images: [{
+      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255267/5b1d5db69ef142125913db3c',
+      style: 'background-size: cover; background-position: center;'
+    }],
+    text: [{
+      html: "<div></div>",
+      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+      classes: 'murky-bg'
+    }]
+  }, {
+    images: [{
+      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255498/5b1fdab3b9bab019783777de',
+      style: 'background-size: cover; background-position: center;'
+    }],
+    text: [{
+      html: "<div></div>",
+      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+      classes: 'murky-bg'
+    }]
+  }, {
+    images: [{
+      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1536047711/ydtbcvwspuk8bkdd3tj1',
+      style: 'background-size: cover; background-position: center;'
+    }],
+    text: [{
+      html: "<div></div>",
+      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+      classes: 'murky-bg'
+    }]
+  }, {
+    images: [{
+      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1536043081/5b8e164cb8a6df0014766a14',
+      style: 'background-size: cover;background-position: center;'
+    }],
+    text: [{
+      html: "<div></div>",
+      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+      classes: 'murky-bg'
+    }]
+  }]
+};
+var carouselHomePage = new WebsyCarousel('carousel', optionsCarousel);

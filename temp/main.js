@@ -1,4 +1,11 @@
-/* global WebsyDesigns include localStorage renderPhoneDetail renderPhoneList */ 
+/* global
+ WebsyDesigns
+include 
+localStorage
+renderPhoneDetail 
+renderPhoneList
+WebsyCarousel 
+*/ 
 
 /* global WebsyDesigns router */
 
@@ -135,7 +142,7 @@ function addToCart (id) {
       <img src=${item.image_url} width="200px">
       <p>${item.description}</p>
       <b><p>${item.price}</p></b>
-      <button onclick="decrement()">Remove</button>
+      <button class="remove-btn" onclick="decrement()">Remove</button>
   </div></div>`
   localStorage.setItem('updateCart', JSON.stringify(cart))
   increment()
@@ -262,3 +269,101 @@ function toggleButton () {
 }
 
 hamBtn.addEventListener('click', toggleButton)
+
+const optionsCarousel = {
+  showPrevNext: false,
+  frames: [
+    {
+      images: [
+        {
+          url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255238/5b1d5d879ef142125913db3a',
+          style: 'background-size: cover; background-position: center;'
+        }
+      ],
+      text: [
+        {
+          html: `<div></div>`,
+          style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+          classes: 'murky-bg'
+        }
+      ]
+    },
+    {
+      images: [
+        {
+          url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1601975921/18',
+          style: 'background-size: cover; background-position: center;'
+        }
+      ],
+      text: [
+        {
+          html: `<div></div>`,
+          style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+          classes: 'murky-bg'
+        }
+      ]
+    },
+    {
+      images: [
+        {
+          url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255267/5b1d5db69ef142125913db3c',
+          style: 'background-size: cover; background-position: center;' 
+        }
+      ],
+      text: [
+        {
+          html: `<div></div>`,
+          style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+          classes: 'murky-bg'
+        }
+      ]
+    },
+    {
+      images: [
+        {
+          url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255498/5b1fdab3b9bab019783777de',
+          style: 'background-size: cover; background-position: center;'
+        }
+      ],
+      text: [
+        {
+          html: `<div></div>`,
+          style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+          classes: 'murky-bg'
+        }
+      ]
+    },
+    {
+      images: [
+        {
+          url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1536047711/ydtbcvwspuk8bkdd3tj1',
+          style: 'background-size: cover; background-position: center;'
+        }
+      ],
+      text: [
+        {
+          html: `<div></div>`,
+          style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+          classes: 'murky-bg'
+        }
+      ]
+    },
+    {
+      images: [
+        {
+          url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1536043081/5b8e164cb8a6df0014766a14',
+          style: 'background-size: cover;background-position: center;'
+        }
+      ],
+      text: [
+        {
+          html: `<div></div>`,
+          style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
+          classes: 'murky-bg'
+        }
+      ]
+    }
+  ]
+}
+
+const carouselHomePage = new WebsyCarousel('carousel', optionsCarousel)
