@@ -136,14 +136,15 @@ function addToCart (id) {
   console.log(cart)
   shoppingCart.innerHTML += 
 
-  ` <div class="cart-list"> <div class="cart-item"> 
+  ` <div class="cart-list" id="cart${item.id}"> <div class="cart-item"> 
 
       <h3>${item.name}</h3>
       <img src=${item.image_url} width="200px">
       <p>${item.description}</p>
       <b><p>${item.price}</p></b>
-      <button class="remove-btn" onclick="decrement()">Remove</button>
-  </div></div>`
+      <button class="remove-btn" onclick="decrement(${item.id})">Remove</button>
+    </div>
+  </div>`
   localStorage.setItem('updateCart', JSON.stringify(cart))
   increment()
 } 
@@ -155,16 +156,17 @@ function increment () {
 
 function removeFromCart (id) {
   const item = data.find((phone) => phone.id === id)
-  cart.filter(item => item.id)
-  // shoppingCart.innerHTML -= item 
-  decrement()
+  cart = cart.filter(item => item.id !== id)
+  let el = document.getElementById(`cart${item.id}`)
+  el.remove()
 }
 
-function decrement () {
+function decrement (id) {
   if (count > 0) {
     count -= 1
     countEl.textContent = count
   }
+  removeFromCart(id)
   localStorage.setItem('updateCart', JSON.stringify(cart))
 }
 

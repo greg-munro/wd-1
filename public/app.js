@@ -101,7 +101,7 @@ function addToCart(id) {
   });
   cart.push(item);
   console.log(cart);
-  shoppingCart.innerHTML += " <div class=\"cart-list\"> <div class=\"cart-item\"> \n\n      <h3>".concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <b><p>").concat(item.price, "</p></b>\n      <button class=\"remove-btn\" onclick=\"decrement()\">Remove</button>\n  </div></div>");
+  shoppingCart.innerHTML += " <div class=\"cart-list\" id=\"cart".concat(item.id, "\"> <div class=\"cart-item\"> \n\n      <h3>").concat(item.name, "</h3>\n      <img src=").concat(item.image_url, " width=\"200px\">\n      <p>").concat(item.description, "</p>\n      <b><p>").concat(item.price, "</p></b>\n      <button class=\"remove-btn\" onclick=\"decrement(").concat(item.id, ")\">Remove</button>\n    </div>\n  </div>");
   localStorage.setItem('updateCart', JSON.stringify(cart));
   increment();
 }
@@ -115,19 +115,20 @@ function removeFromCart(id) {
   var item = data.find(function (phone) {
     return phone.id === id;
   });
-  cart.filter(function (item) {
-    return item.id;
-  }); // shoppingCart.innerHTML -= item 
-
-  decrement();
+  cart = cart.filter(function (item) {
+    return item.id !== id;
+  });
+  var el = document.getElementById("cart".concat(item.id));
+  el.remove();
 }
 
-function decrement() {
+function decrement(id) {
   if (count > 0) {
     count -= 1;
     countEl.textContent = count;
   }
 
+  removeFromCart(id);
   localStorage.setItem('updateCart', JSON.stringify(cart));
 } // if (count === 0) {
 //   countEl.classList.toggle('test')
