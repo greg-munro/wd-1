@@ -230,10 +230,11 @@ function toggleButton() {
 
 hamBtn.addEventListener('click', toggleButton);
 var optionsCarousel = {
-  showPrevNext: false,
+  showPrevNext: true,
+  showFrameSelector: true,
   frames: [{
     images: [{
-      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255238/5b1d5d879ef142125913db3a',
+      url: 'https://images.unsplash.com/photo-1573920011462-eb3003086611?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
       style: 'background-size: cover; background-position: center;'
     }],
     text: [{
@@ -243,7 +244,7 @@ var optionsCarousel = {
     }]
   }, {
     images: [{
-      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1601975921/18',
+      url: 'https://images.unsplash.com/photo-1621330396173-e41b1cafd17f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
       style: 'background-size: cover; background-position: center;'
     }],
     text: [{
@@ -253,43 +254,13 @@ var optionsCarousel = {
     }]
   }, {
     images: [{
-      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255267/5b1d5db69ef142125913db3c',
+      url: 'https://images.unsplash.com/photo-1618214394482-caa124b8ad2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1228&q=80',
       style: 'background-size: cover; background-position: center;'
-    }],
-    text: [{
-      html: "<div></div>",
-      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
-      classes: 'murky-bg'
     }]
   }, {
     images: [{
-      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1529255498/5b1fdab3b9bab019783777de',
+      url: 'https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1001&q=80',
       style: 'background-size: cover; background-position: center;'
-    }],
-    text: [{
-      html: "<div></div>",
-      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
-      classes: 'murky-bg'
-    }]
-  }, {
-    images: [{
-      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1536047711/ydtbcvwspuk8bkdd3tj1',
-      style: 'background-size: cover; background-position: center;'
-    }],
-    text: [{
-      html: "<div></div>",
-      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
-      classes: 'murky-bg'
-    }]
-  }, {
-    images: [{
-      url: 'http://res.cloudinary.com/hlra7fkjj/raw/upload/v1536043081/5b8e164cb8a6df0014766a14',
-      style: 'background-size: cover;background-position: center;'
-    }],
-    text: [{
-      html: "<div></div>",
-      style: 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;',
-      classes: 'murky-bg'
     }]
   }]
 };
